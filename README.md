@@ -7,9 +7,5 @@ Tomcat 9<br>
 MySQL Community 8.0.17<br>
 JDK 11.0.4(LTS)<br>
 
-## 2020_Version<br>
-Eclispe 2019-06<br>
-Tomcat 7</br>
-Java 8</h4>
 
 
