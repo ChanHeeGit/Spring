@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- Exam exam = new NewlecExam(); 생성-->
+	<bean id="exam" class="spring.di.entity.NewlecExam"/>
+	
+	<!-- ExamConsole console = new GridExamConsole(); exam을 사용할 컨테이너-->
+	<bean id="console" class="spring.di.ui.GridExamConsole">
+		<!-- 밑의 setExam은 console의 setExam을 사용중, 여기서 name="exam"은
+			setExam함수 이름인데 그냥 exam이라고 씀 일종의 규칙같은것 -->
+		<!-- ref="exam"은 밑의 setExam에서 exam을 인자로 사용하는데 그 인자는 위 exam bean에서 생성된
+			것을 사용하기 때문에 명시해줌 -->
+		<property name="exam" ref="exam"/>
+	</bean>
+	
+	<!-- console.setExam(exam); 조립 -->
+	
+	
+</beans>
