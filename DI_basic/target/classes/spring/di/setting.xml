@@ -1,14 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- 태그를 이용한 di 
+	<bean id="exam" class="spring.di.entity.NewlecExam" p:kor="10"/>
+	-->
 	
 	<!-- Exam exam = new NewlecExam(); 생성-->
 	<bean id="exam" class="spring.di.entity.NewlecExam">
+		<!-- setter를 이용한 방법 
 		<property name="kor" value="10"/>
 		<property name="eng" value="10"/>
 		<property name="math" value="10"/>
 		<property name="com" value="10"/>
+		-->
+		
+		<!-- 생성자를 이용한 방법 -->
+		<!-- index 이용 -->
+		<constructor-arg index="0" value="10"/>
+		<!-- name 이용 , type까지 지정할 수 있음-->
+		<constructor-arg name="eng" type="int" value="10"/>
+		<constructor-arg value="10"/>
+		<constructor-arg value="10"/>
 	</bean>
 	
 	<!-- ExamConsole console = new GridExamConsole(); exam을 사용할 컨테이너-->
@@ -17,10 +32,11 @@
 			setExam함수 이름인데 그냥 exam이라고 씀 일종의 규칙같은것 -->
 		<!-- ref="exam"은 밑의 setExam에서 exam을 인자로 사용하는데 그 인자는 위 exam bean에서 생성된
 			것을 사용하기 때문에 명시해줌 -->
+			<!-- console.setExam(exam); 조립 -->
 		<property name="exam" ref="exam"/>
 	</bean>
 	
-	<!-- console.setExam(exam); 조립 -->
+	
 	
 	
 </beans>

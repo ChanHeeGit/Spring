@@ -7,7 +7,19 @@ public class NewlecExam implements Exam {
 	private int math;
 	private int com;
 	
+	public NewlecExam() {
+		// TODO Auto-generated constructor stub
+	}
 	
+	
+	public NewlecExam(int kor, int eng, int math, int com) {
+		this.kor = kor;
+		this.eng = eng;
+		this.math = math;
+		this.com = com;
+	}
+
+
 	@Override
 	public int total() {
 		// TODO Auto-generated method stub
