@@ -3,9 +3,13 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:p="http://www.springframework.org/schema/p"
 	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:context="http://www.springframework.org/schema/context"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
 	
+	<!-- annotation을 사용하기 위해 설정해줘야 함 -->
+	<context:annotation-config></context:annotation-config>
 	<!-- 태그를 이용한 di 
 	<bean id="exam" class="spring.di.entity.NewlecExam" p:kor="10"/>
 	-->
@@ -35,7 +39,8 @@
 		<!-- ref="exam"은 밑의 setExam에서 exam을 인자로 사용하는데 그 인자는 위 exam bean에서 생성된
 			것을 사용하기 때문에 명시해줌 -->
 			<!-- console.setExam(exam); 조립 -->
-		<property name="exam" ref="exam"/>
+		<!-- exam class에서 set함수에 di되는 부분->@AutoWired로 바꿀것 -->
+		<!-- <property name="exam" ref="exam"/>  -->
 	</bean>
 	
 	<!-- 생성자를 넘기지 않고 직접 만들기, util 추가, list-class에 어떤 라이브러리인지 명시 -->
