@@ -28,11 +28,13 @@ public class Program {
 		ApplicationContext context = 
 				new ClassPathXmlApplicationContext("spring/di/setting.xml");
 		
+		
 		// bean id로 가져오는 방법 : object 형식으로 가져오기 때문에 해당 type으로 형변환이 필요
-		//ExamConsole console = (ExamConsole) context.getBean("console");
+		ExamConsole console = (ExamConsole) context.getBean("console");
 		
 		// bean class로 가져오는 방법 : 많이쓰임
-		ExamConsole console = context.getBean(ExamConsole.class);
+		//ExamConsole console = context.getBean(ExamConsole.class);
+		
 		console.print();
 		
 		//List<Exam> exams = (List<Exam>) context.getBean("exams"); //new ArrayList<>();
