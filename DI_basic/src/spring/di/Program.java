@@ -29,11 +29,13 @@ public class Program {
 				new ClassPathXmlApplicationContext("spring/di/setting.xml");
 		
 		
+		// @Component로 생성하는 경우 이름을 지정하지 않기 때문에 id로 가져오려면
+		// @Component("console")과 같이  찾을 id를 명시해줘야한다
 		// bean id로 가져오는 방법 : object 형식으로 가져오기 때문에 해당 type으로 형변환이 필요
-		ExamConsole console = (ExamConsole) context.getBean("console");
+		//ExamConsole console = (ExamConsole) context.getBean("console");
 		
-		// bean class로 가져오는 방법 : 많이쓰임
-		//ExamConsole console = context.getBean(ExamConsole.class);
+		// bean class로 가져오는 방법 : 많이쓰임(형식으로 찾는법)
+		ExamConsole console = context.getBean(ExamConsole.class);
 		
 		console.print();
 		

@@ -1,15 +1,18 @@
 package spring.di.ui;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import spring.di.entity.Exam;
 
+@Component
 public class InlineExamConsole implements ExamConsole {
 
 	
 	//이부분에 Autowired를 정의하면 생성자가 실행될 때 di된다
 	//밑에 setter부분에 정의하면 setter함수 실행시 di됌
 	//@Autowired(required = false) // bean 객체가 없어도 null처리하고 진행!
+	
 	@Autowired(required = false) // bean 객체가 없어도 null처리하고 진행!
 	private Exam exam;
 	
@@ -24,6 +27,7 @@ public class InlineExamConsole implements ExamConsole {
 	//public InlineExamConsole(@Qualifier("exam1")Exam exam1,
 	//                         @Qualifier("exam2")Exam exam2)
 	// 이런식으로 안에다 직접 하나씩 선언해 줘야 di가 정상적으로 된다.
+	
 	public InlineExamConsole(Exam exam) {
 		System.out.println("오버로드 생성자 !");
 		this.exam = exam;

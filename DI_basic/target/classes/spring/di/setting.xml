@@ -9,13 +9,18 @@
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
 	
 	<!-- annotation을 사용하기 위해 설정해줘야 함 -->
-	<context:annotation-config></context:annotation-config>
+	<!--  <context:annotation-config></context:annotation-config> -->
+	
+	<!-- 해당 package 안을 scan하여 annotaion을 이용해 객체를 생성할 수 있게 해주는 부분 
+	     	아래 코드를 사용하면 위의 <context:annotation-config> 는 필요가 없다 -->
+	<context:component-scan base-package="spring.di.ui, spring.di.entity"></context:component-scan>
+	
 	<!-- 태그를 이용한 di 
 	<bean id="exam" class="spring.di.entity.NewlecExam" p:kor="10"/>
 	-->
 	
 	<!-- Exam exam = new NewlecExam(); 생성-->
-	<bean id="exam" class="spring.di.entity.NewlecExam">
+	<!-- <bean id="exam" class="spring.di.entity.NewlecExam">  -->
 		<!-- setter를 이용한 방법 
 		<property name="kor" value="10"/>
 		<property name="eng" value="10"/>
@@ -25,15 +30,16 @@
 		
 		<!-- 생성자를 이용한 방법 -->
 		<!-- index 이용 -->
-		<constructor-arg index="0" value="10"/>
-		<!-- name 이용 , type까지 지정할 수 있음-->
+		<!-- <constructor-arg index="0" value="10"/>  -->
+		<!-- name 이용 , type까지 지정할 수 있음
 		<constructor-arg name="eng" type="int" value="10"/>
 		<constructor-arg value="10"/>
 		<constructor-arg value="10"/>
-	</bean>
+	</bean> -->
 	
 	<!-- ExamConsole console = new GridExamConsole(); exam을 사용할 컨테이너-->
-	<bean id="console" class="spring.di.ui.InlineExamConsole">
+	<!-- @Component annotation을 이용하여 java파일에서 객체생성을 위해 주석처리함 -->
+	<!-- <bean id="console" class="spring.di.ui.InlineExamConsole">  -->
 		<!-- 밑의 setExam은 console의 setExam을 사용중, 여기서 name="exam"은
 			setExam함수 이름인데 그냥 exam이라고 씀 일종의 규칙같은것 -->
 		<!-- ref="exam"은 밑의 setExam에서 exam을 인자로 사용하는데 그 인자는 위 exam bean에서 생성된
@@ -41,7 +47,7 @@
 			<!-- console.setExam(exam); 조립 -->
 		<!-- exam class에서 set함수에 di되는 부분->@AutoWired로 바꿀것 -->
 		<!-- <property name="exam" ref="exam"/>  -->
-	</bean>
+	<!--</bean>  -->   
 	
 
 	
