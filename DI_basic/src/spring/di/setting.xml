@@ -13,7 +13,7 @@
 	
 	<!-- 해당 package 안을 scan하여 annotaion을 이용해 객체를 생성할 수 있게 해주는 부분 
 	     	아래 코드를 사용하면 위의 <context:annotation-config> 는 필요가 없다 -->
-	<context:component-scan base-package="spring.di.ui, spring.di.entity"></context:component-scan>
+	<!--  <context:component-scan base-package="spring.di.ui, spring.di.entity"></context:component-scan> -->
 	
 	<!-- 태그를 이용한 di 
 	<bean id="exam" class="spring.di.entity.NewlecExam" p:kor="10"/>

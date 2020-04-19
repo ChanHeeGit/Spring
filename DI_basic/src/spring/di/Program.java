@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import spring.di.entity.Exam;
@@ -26,7 +27,10 @@ public class Program {
 		
 		// Ioc 컨테이너 
 		ApplicationContext context = 
-				new ClassPathXmlApplicationContext("spring/di/setting.xml");
+				// java config 사용
+				new AnnotationConfigApplicationContext(NewlecDIConfig.class);
+				// xml config 사용
+				//new ClassPathXmlApplicationContext("spring/di/setting.xml");
 		
 		
 		// @Component로 생성하는 경우 이름을 지정하지 않기 때문에 id로 가져오려면
